@@ -84,7 +84,7 @@
   margin-right: 10px;
   /* font-family: "Josefin Sans", serif; */
   font-family: "Merienda", cursive;
-  font-size: 15px;
+  font-size: 1rem;
   color: #ccc;
   background-color: #1d222b;
   border: 1px solid #444;
@@ -103,12 +103,12 @@
 
 .add-task-btn {
   min-width: 100px;
-  background-color: #790e43;
+  background-color: rgb(39, 133, 25);
   color: #ccc;
   border: none;
   /* font-family: "Montserrat", sans-serif; */
   font-family: "Merienda", cursive;
-  font-size: 14px;
+  font-size: 0.9rem;
   border-radius: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   outline: none;
@@ -149,12 +149,12 @@
 .clear-btn {
   width: 100px;
   height: 35px;
-  background-color: #790e43;
+  background-color: #760d41;
   color: #ccc;
   border: none;
   /* font-family: "Montserrat", sans-serif; */
   font-family: "Merienda", cursive;
-  font-size: 14px;
+  font-size: 0.9rem;
   border-radius: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   outline: none;
