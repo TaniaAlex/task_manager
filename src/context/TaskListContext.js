@@ -11,6 +11,8 @@ const TaskListContextProvider = (props) => {
     { title: "Read a book", id: "ls" },
   ]);
 
+  const [editElem, setEditElem] = useState(null);
+
   const addTask = (title) => {
     setTasks([...tasks, { title, id: uuidv4() }]);
   };
@@ -23,8 +25,32 @@ const TaskListContextProvider = (props) => {
     setTasks([]);
   };
 
+  const findTask = (id) => {
+    const elem = tasks.find((task) => task.id === id);
+    setEditElem(elem);
+  };
+
+  const editTask = (title, id) => {
+    const newTasks = tasks.map((task) =>
+      task.id === id ? { title, id } : task
+    );
+    setTasks(newTasks);
+    // clear input field after editing
+    setEditElem(null);
+  };
+
   return (
-    <TaskListContext.Provider value={{ tasks, addTask, deleteTask, clearAll }}>
+    <TaskListContext.Provider
+      value={{
+        tasks,
+        addTask,
+        deleteTask,
+        clearAll,
+        findTask,
+        editElem,
+        editTask,
+      }}
+    >
       {props.children}
     </TaskListContext.Provider>
   );

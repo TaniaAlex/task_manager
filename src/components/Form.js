@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { TaskListContext } from "../context/TaskListContext";
 
 const Form = () => {
   // to get access to addTask function => call useContext Hook with argument (TaskListcontext) => use destructuring to grab addTask from Context
-  const { addTask, clearAll } = useContext(TaskListContext);
+  const { addTask, clearAll, editElem, editTask } = useContext(TaskListContext);
 
   // create a state to store current value of the input field = title
   const [title, setTitle] = useState("");
@@ -13,13 +13,27 @@ const Form = () => {
   // => get input value from the input field with onChange
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTask(title);
-    setTitle("");
+    if (!editElem) {
+      addTask(title);
+      // clear input field after submit
+      setTitle("");
+    } else {
+      editTask(title, editElem.id);
+    }
   };
   const handleChange = (e) => {
     setTitle(e.target.value);
-    console.log(title);
+    // console.log(title);
   };
+
+  useEffect(() => {
+    if (editElem) {
+      setTitle(editElem.title);
+      //   console.log(editElem);
+    } else {
+      setTitle("");
+    }
+  }, [editElem]);
 
   return (
     <form className="form" onSubmit={handleSubmit}>
@@ -33,7 +47,7 @@ const Form = () => {
       />
       <div className="buttons">
         <button type="submit" className="btn add-task-btn">
-          Add Task
+          {editElem ? "Edit Task" : "Add Task"}
         </button>
         <button className="btn clear-btn" onClick={clearAll}>
           Clear all
