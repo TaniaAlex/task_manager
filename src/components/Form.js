@@ -3,7 +3,7 @@ import { TaskListContext } from "../context/TaskListContext";
 
 const Form = () => {
   // to get access to addTask function => call useContext Hook with argument (TaskListcontext) => use destructuring to grab addTask from Context
-  const { addTask } = useContext(TaskListContext);
+  const { addTask, clearAll } = useContext(TaskListContext);
 
   // create a state to store current value of the input field = title
   const [title, setTitle] = useState("");
@@ -35,7 +35,9 @@ const Form = () => {
         <button type="submit" className="btn add-task-btn">
           Add Task
         </button>
-        <button className="btn clear-btn">Clear all</button>
+        <button className="btn clear-btn" onClick={clearAll}>
+          Clear all
+        </button>
       </div>
     </form>
   );
